@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 25 - 8</title>
+    <style>
+        .form{
+            width: 500px;
+            margin: 100px auto;
+            border: 2px solid black;
+            padding: 30px 30px;
+        }
+        input {
+            width: 100%;
+            padding: 10px 10px;
+            margin: 20px 0px;
+        }
+        textarea{
+            width: 100%;
+            padding: 10px 10px;
+        } 
+        button{
+            padding: 12px 24px;
+            border-radius: 4;
+            background-color: black;
+            color: #FFF;
+            font-size: 14px;
+            border: 1px solid black;
+            margin-top: 20px;
+        }
+        button:hover{
+            background-color: #FFF;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>JSON</h1>
+    <h3>Javascript Object Notation</h3>
+
+    <ul id="users-container"></ul>
+
+    <section class="form">
+        <input id="title" placeholder="title">
+        <input id="bodyContent" type="text" placeholder="post-body">
+        <button id="Submit">Submit</button>
+    </section>
+        
+
+<script>
+
+    document.getElementById("Submit").addEventListener("click", function(){
+        // console.log('clicked');
+        const title = document.getElementById('title').value;
+        const bodyContent = document.getElementById('bodyContent').value;
+        console.log(title, bodyContent);
+    })
+
+    function postToServer(postInfo){
+        fetch('httpa://jsonplaceholder.typicode.com/posts', {
+            method: 'POST',
+            body:JSON.stringify(postInfo),
+            headers: {
+                "Content-type": "application/json; charser=UTF-8"
+            }
+        })
+        .then(response => response.json())
+        .then(data => console.log(data));
+    }
+
+</script>
+</body>
+</html>
